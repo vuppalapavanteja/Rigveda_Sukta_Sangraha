@@ -2,243 +2,185 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>वेदिक ग्रन्थ पोर्टल</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedic Digital Manuscript Portal</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;600&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-    body{
-        margin:0;
-        background:#f4f0e3;
-        color:#2a1f16;
-        font-family:"Times New Roman", serif;
-    }
+:root {
+  --primary-dark: #4a2c2a;
+  --saffron: #c97b2b;
+  --gold: #c9a227;
+  --paper: #f6f0e6;
+  --telugu-bg: #ffe8d6;
+  --dev-bg: #e8e1d5;
+}
 
-    /* =========================
-       🌐 GLOBAL LANGUAGE FONTS
-       ========================= */
+/* Fonts */
+.telugu-text { font-family: 'Noto Sans Telugu', sans-serif; }
+.devanagari-text { font-family: 'Noto Serif Devanagari', serif; }
 
-    /* Devanagari (Sanskrit/Hindi) */
-    :lang(sa),
-    :lang(sa-Deva),
-    :lang(hi){
-        font-family:"Noto Serif Devanagari", serif !important;
-    }
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #e3c7a0 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
 
-    /* Telugu */
-    :lang(te){
-        font-family:"Noto Sans Telugu", sans-serif !important;
-    }
+.main-wrapper {
+  background: rgba(255, 252, 245, 0.97);
+  border: 8px double var(--gold);
+  max-width: 1050px;
+  width: 100%;
+  padding: 50px 35px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,0,0,0.25);
+}
 
-    /* fallback safety */
-    *{
-        font-variant-ligatures: normal;
-    }
+/* Header */
+h1 {
+  font-size: 42px;
+  margin-bottom: 5px;
+  color: #5a332f;
+  letter-spacing: 2px;
+}
 
-    /* ========================= */
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 40px;
+  color: #6b4a40;
+}
 
-    header{
-        text-align:center;
-        padding:28px 10px;
-        background:#1d1713;
-        color:#f3e2b3;
-        border-bottom:3px solid #b89b5e;
-    }
+/* Section block */
+.section {
+  margin-bottom: 35px;
+  padding: 20px;
+  border-top: 1px solid rgba(201,162,39,0.4);
+  border-bottom: 1px solid rgba(201,162,39,0.4);
+}
 
-    header h1{
-        margin:0;
-        font-size:30px;
-    }
+/* Category Row */
+.link-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
 
-    header p{
-        margin-top:6px;
-        font-size:14px;
-        color:#d8c79c;
-    }
+.category-name {
+  min-width: 220px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+  color: #5a332f;
+}
 
-    .container{
-        max-width:1000px;
-        margin:auto;
-        padding:20px;
-    }
+/* Buttons */
+.lang-btn {
+  text-decoration: none;
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--primary-dark);
+  transition: 0.3s;
+}
 
-    .block{
-        margin-bottom:28px;
-        border:1px solid #cbbd9b;
-        background:#fffaf0;
-    }
+.lang-btn:hover {
+  background: var(--saffron);
+  color: white;
+  transform: translateY(-2px);
+}
 
-    .block-title{
-        background:#e7dcc0;
-        padding:12px 15px;
-        font-size:20px;
-        font-weight:bold;
-    }
+/* Colors */
+.btn-telugu { background: var(--telugu-bg); }
+.btn-dev { background: var(--dev-bg); }
 
-    .block-sub{
-        padding:8px 15px;
-        font-size:14px;
-        color:#5a4633;
-        border-bottom:1px solid #e3d7bf;
-    }
-
-    table{
-        width:100%;
-        border-collapse:collapse;
-    }
-
-    th, td{
-        border-top:1px solid #e3d7bf;
-        padding:12px;
-        vertical-align:top;
-        font-size:14px;
-    }
-
-    th{
-        width:28%;
-        background:#f0e6cf;
-        font-weight:bold;
-    }
-
-    a{
-        color:#2a1f16;
-        text-decoration:none;
-        border-bottom:1px dotted #6b5a48;
-        margin-right:8px;
-    }
-
-    a:hover{
-        color:#8b5e34;
-    }
-
-    .coming{
-        color:#8a7a60;
-        font-size:12px;
-    }
-
-    footer{
-        text-align:center;
-        padding:18px;
-        font-size:12px;
-        color:#7a7a7a;
-    }
-
+/* Responsive */
+@media(max-width: 800px){
+  .link-row { flex-direction: column; }
+  .category-name { text-align: center; }
+}
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🕉️ वेदिक ग्रन्थ पोर्टल</h1>
-    <p>📚 वेद एवं परम्परागत ग्रन्थ संग्रह | 📖 Vedic Text Repository</p>
-</header>
+<div class="main-wrapper">
 
-<div class="container">
+  <h1 class="devanagari-text">वेदिक डिजिटल ग्रन्थ पोर्टल</h1>
+  <div class="subtitle">Vedic Manuscript Experience | Rigveda Digital Archive</div>
 
-<!-- RIGVEDA -->
-<div class="block">
+  <!-- RIGVEDA -->
+  <div class="section">
 
-    <div class="block-title">
-        <span lang="sa">ऋग्वेदः</span> | <span lang="te">ఋగ్వేదం</span>
+    <div class="link-row">
+      <span class="category-name devanagari-text">ऋग्वेदः | ఋగ్వేదం</span>
     </div>
 
-    <div class="block-sub">
-        <span lang="sa">काञ्ची परम्परा पाठ संस्करणानि</span> | 
-        <span lang="te">కాంచీ పఠన సంప్రదాయం</span>
+    <div class="link-row">
+      <span class="category-name">Kanchi Style</span>
+
+      <a href="Rigveda_Samhitha_Kanchi_Style_telugu.html"
+         class="lang-btn btn-telugu telugu-text">తెలుగు</a>
+
+      <a href="Rigveda_Samhitha_Kanchi_Style_devanagari.html"
+         class="lang-btn btn-dev devanagari-text">देवनागरी</a>
+
+      <a href="Rigveda_Samhitha_Kanchi_Style_tamil.html" class="lang-btn">தமிழ்</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_kannada.html" class="lang-btn">ಕನ್ನಡ</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_malayalam.html" class="lang-btn">മലയാളം</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_bengali.html" class="lang-btn">বাংলা</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_gujarati.html" class="lang-btn">ગુજરાતી</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_gurmukhi.html" class="lang-btn">ਗੁਰਮੁਖੀ</a>
+      <a href="Rigveda_Samhitha_Kanchi_Style_oriya.html" class="lang-btn">ଓଡ଼ିଆ</a>
     </div>
 
-    <table>
-
-        <tr>
-            <th><span lang="sa">प्रारूपम् १</span> | <span lang="te">రూపం 1</span></th>
-            <td>
-                काञ्ची शैली | Kanchi Style <br><br>
-
-                <a href="Rigveda_Samhitha_Kanchi_Style_telugu.html" lang="te">తెలుగు</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_tamil.html">தமிழ்</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_kannada.html">ಕನ್ನಡ</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_malayalam.html">മലയാളം</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_bengali.html">বাংলা</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_devanagari.html" lang="sa">देवनागरी</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_gujarati.html">ગુજરાતી</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_gurmukhi.html">ਗੁਰਮੁਖੀ</a>
-                <a href="Rigveda_Samhitha_Kanchi_Style_oriya.html">ଓଡ଼ିଆ</a>
-            </td>
-        </tr>
-
-        <tr>
-            <th><span lang="sa">प्रारूपम् २</span> | <span lang="te">రూపం 2</span></th>
-            <td>
-                <span lang="sa">श्रीङ्गेरी शैली</span> | Sringeri Style <br>
-                <span class="coming" lang="te">निर्माणाधीनम् | నిర్మాణంలో ఉంది</span>
-            </td>
-        </tr>
-
-    </table>
-</div>
-
-<!-- SUKTA -->
-<div class="block">
-
-    <div class="block-title">
-        <span lang="sa">ऋग्वेद सूक्तानि</span> | <span lang="te">ఋగ్వేద సూక్తాలు</span>
+    <div class="link-row">
+      <span class="category-name">Sringeri Style</span>
+      <span class="devanagari-text">निर्माणाधीनम् | నిర్మాణంలో ఉంది</span>
     </div>
 
-    <div class="block-sub">
-        <span lang="sa">चयनित सूक्त संग्रहः</span> | <span lang="te">ఎంపిక చేసిన సూక్త సమాహారం</span>
+  </div>
+
+  <!-- SUKTA -->
+  <div class="section">
+
+    <div class="link-row">
+      <span class="category-name devanagari-text">ऋग्वेद सूक्तानि | సూక్తాలు</span>
     </div>
 
-    <table>
-        <tr>
-            <th><span lang="sa">प्रारूपम् १</span></th>
-            <td><span class="coming" lang="te">निर्माणाधीनम् | WIP</span></td>
-        </tr>
-    </table>
-</div>
-
-<!-- NITHYA -->
-<div class="block">
-
-    <div class="block-title">
-        <span lang="sa">नित्य कर्मानुष्ठानम्</span> | <span lang="te">నిత్య కర్మానుష్ఠానం</span>
+    <div class="link-row">
+      <span class="category-name">Format 1</span>
+      <span class="telugu-text">వర్క్ ఇన్ ప్రోగ్రెస్</span>
     </div>
 
-    <div class="block-sub">
-        <span lang="sa">दैनिक वेदाचार विधयः</span> | <span lang="te">దైనందిన ఆచార విధులు</span>
+  </div>
+
+  <!-- KARMA -->
+  <div class="section">
+
+    <div class="link-row">
+      <span class="category-name devanagari-text">नित्य कर्मानुष्ठानम्</span>
     </div>
 
-    <table>
-        <tr>
-            <th><span lang="sa">प्रारूपम् १</span></th>
-            <td><span class="coming" lang="te">निर्माणाधीनम्</span></td>
-        </tr>
-    </table>
-</div>
-
-<!-- SUKTANI -->
-<div class="block">
-
-    <div class="block-title">
-        <span lang="sa">सूक्त संग्रहः</span> | <span lang="te">సూక్త సమాహారం</span>
+    <div class="link-row">
+      <span class="telugu-text">దైనందిన ఆచార విధులు</span>
     </div>
 
-    <div class="block-sub">
-        <span lang="sa">संरचित वैदिक सूक्तानि</span> | <span lang="te">వ్యవస్థీకృత సూక్తాలు</span>
-    </div>
-
-    <table>
-        <tr>
-            <th><span lang="sa">प्रारूपम् १</span></th>
-            <td><span class="coming" lang="te">निर्माणाधीनम्</span></td>
-        </tr>
-    </table>
-</div>
+  </div>
 
 </div>
-
-<footer>
-    ॐ — वेद ज्ञानस्य डिजिटल संरक्षणम् | Vedic Knowledge Preservation
-</footer>
 
 </body>
 </html>
